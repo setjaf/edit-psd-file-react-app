@@ -2,7 +2,7 @@ var Dropbox = require('dropbox').Dropbox;
 
 export default class EditorPSD{
 
-    #accessToken = 'sl.Bk8avkcZyvKZ7wEDJ9DNlhoVtJFob-46SUaV8QYffbRxg9XGgUvGt6ZZNOMu6eh_DZLJR5EzogqgJZ6W4xeD4CC7PjzeNXWbAJSaProc-v58Pj0-vdSImKgh5NQhm0QzjBK8vlSqm5tV4Ba3bXGqPSE';
+    #accessToken = process.env.DBX_ACCESS_TOKEN;
     #dbx;
     #psdInfo={};
     #layersToEditList=[];
@@ -22,7 +22,7 @@ export default class EditorPSD{
 
         this.#layersToEditList = layersToEdit;
 
-        console.log(this.#psdInfo);
+        // console.log(this.#psdInfo);
     }
 
     /**
@@ -111,7 +111,7 @@ export default class EditorPSD{
 
         jsonAPI.inputs = [{storage:"dropbox", href:urlPSDResult.result.link}];
 
-        this.#layersToEditList.reduce(async (previusPromise,l)=>{
+        await this.#layersToEditList.reduce(async (previusPromise,l)=>{
             await previusPromise;
 
             let layerInfo = {
