@@ -1,6 +1,7 @@
 import { Col, Form, Image, Row } from "react-bootstrap";
 import PSDUtils from "../../Utils/PSDUtils";
 import ImageFromSynthesizable from "../ImageFromSynthesizable";
+import ImageLayerInputControl from "../ImageLayerInputControl";
 
 function ImageLayerList({list = []}) {
     return (
@@ -21,12 +22,7 @@ function ImageLayerList({list = []}) {
                                     <Col sm={3}>
                                         <ImageFromSynthesizable synthesizable={layer} />                                           
                                     </Col>
-                                    <Col sm={6}>
-                                        <Form.Control type="file"/>
-                                    </Col>
-                                    <Col sm={3}>
-                                        <Image src="" rounded />
-                                    </Col>
+                                    <ImageLayerInputControl layer={layer}/>
 
                                 </Row>
 

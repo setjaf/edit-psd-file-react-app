@@ -1,6 +1,11 @@
 import { Form, InputGroup } from "react-bootstrap";
+import { useLayersDispatch } from "../../Context/LayersContext";
+import TextLayerControl from "../TextLayerControl";
 
 function TextLayerList({list = []}) {
+
+    
+
     return (
         <>
         <h2>Capas de texto</h2>
@@ -9,9 +14,7 @@ function TextLayerList({list = []}) {
                 return(
                     <InputGroup key={"textLayer_" + index} className="pb-3">
                         <InputGroup.Text>{layer.name}</InputGroup.Text>
-                        <Form.Control
-                            value={layer.text}
-                        />
+                        <TextLayerControl layer={layer}/>
                     </InputGroup>
                 )
             })

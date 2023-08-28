@@ -4,11 +4,11 @@ import PSDUtils from "../../Utils/PSDUtils";
 function PSDFileUpload({setPSDFile = () => {}}) {
 
     const handleOnChangeFileInput = async (e) => {
-        console.log(e);
+        // console.log(e);
         let file = e.target.files[0];
         let psdFile = await PSDUtils.parsePSD(file);
-        console.log(psdFile);
-        setPSDFile(psdFile)
+        // console.log({psdFile:psdFile, file: file});
+        setPSDFile({psdFile:psdFile, file: file})
     }                                
     
     
@@ -17,7 +17,7 @@ function PSDFileUpload({setPSDFile = () => {}}) {
             {
             // Todo: Poner validación para solo aceptar psd y psb
             }
-            <input type="file" onChange={(e)=>{handleOnChangeFileInput(e)}} />   
+            <input type="file" onChange={(e)=>{handleOnChangeFileInput(e)}} accept=".psd"/>   
         </div>
     )
 
